@@ -1,0 +1,26 @@
+#### stripchart-ggplot
+# stripchart (dotplot) using R base graphics
+
+hb <- c(141, 148, 132, 138, 154, 142, 150, 146, 155, 158, 150, 140, 147, 148, 144, 150, 149, 145)
+#### hist
+# histogram using R base graphics
+# par() gives graphical options
+# mfrow = "multifigure by row" with 1 row and 3 columns
+par(mfrow=c(1,3))
+# main is the title, xlab is x-axis label (ylab also available)
+hist(hb, main="Modern Englishman", xlab="head breadth (mm)")
+# breaks are how many bins-1 to use
+hist (hb, breaks = 15, main="Histogram, 15 breaks")
+#freq=FALSE changes the vertical axis to density,
+# so the total area of the bars is now equal to 1
+hist (hb, breaks = 8, freq = FALSE, main="Histogram, density")
+# histogram using ggplot
+library(ggplot2)
+# first put hb vector into a data.frame
+hb_df <- data.frame(hb)
+p<- ggplot (hb_df, aes (x = hb))
+# always specify a binwidth for the histogram (default is range/30)
+# try several binwidths
+p <- p + geom_histogram(binwidth = 5)
+p <- p + labs (title = "Modern Englishman head breadth")
+print(p)
