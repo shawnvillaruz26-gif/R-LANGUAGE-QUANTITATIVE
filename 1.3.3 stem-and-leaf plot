@@ -1,0 +1,10 @@
+#### stripchart-ggplot
+# stripchart (dotplot) using R base graphics
+
+hb <- c(141, 148, 132, 138, 154, 142, 150, 146, 155, 158, 150, 140, 147, 148, 144, 150, 149, 145)
+
+stem(hb)
+
+stem(hb, scale = 2)
+
+stem(hb, scale=5)
